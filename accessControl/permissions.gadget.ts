@@ -9,6 +9,52 @@ import type { GadgetPermissions } from "gadget-server";
 export const permissions: GadgetPermissions = {
   type: "gadget/permissions/v1",
   roles: {
+    "shopify-app-users": {
+      storageKey: "Role-Shopify-App",
+      models: {
+        shopifyGdprRequest: {
+          read: {
+            filter: "accessControl/filters/shopify/shopifyGdprRequest.gelly",
+          },
+          actions: {
+            create: true,
+            update: true,
+          },
+        },
+        shopifyProduct: {
+          read: {
+            filter: "accessControl/filters/shopify/shopifyProduct.gelly",
+          },
+        },
+        shopifyProductImage: {
+          read: {
+            filter: "accessControl/filters/shopify/shopifyProductImage.gelly",
+          },
+        },
+        shopifyShop: {
+          read: {
+            filter: "accessControl/filters/shopify/shopifyShop.gelly",
+          },
+          actions: {
+            install: true,
+            reinstall: true,
+            uninstall: true,
+            update: true,
+          },
+        },
+        shopifySync: {
+          read: {
+            filter: "accessControl/filters/shopify/shopifySync.gelly",
+          },
+          actions: {
+            abort: true,
+            complete: true,
+            error: true,
+            run: true,
+          },
+        },
+      },
+    },
     "signed-in": {
       storageKey: "signed-in",
       default: {
@@ -16,6 +62,47 @@ export const permissions: GadgetPermissions = {
         action: true,
       },
       models: {
+        shopifyGdprRequest: {
+          read: true,
+          actions: {
+            create: true,
+            update: true,
+          },
+        },
+        shopifyProduct: {
+          read: true,
+          actions: {
+            create: true,
+            delete: true,
+            update: true,
+          },
+        },
+        shopifyProductImage: {
+          read: true,
+          actions: {
+            create: true,
+            delete: true,
+            update: true,
+          },
+        },
+        shopifyShop: {
+          read: true,
+          actions: {
+            install: true,
+            reinstall: true,
+            uninstall: true,
+            update: true,
+          },
+        },
+        shopifySync: {
+          read: true,
+          actions: {
+            abort: true,
+            complete: true,
+            error: true,
+            run: true,
+          },
+        },
         user: {
           read: {
             filter: "accessControl/filters/user/tenant.gelly",
